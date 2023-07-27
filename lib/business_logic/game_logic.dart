@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:xo_game/presentation/view/home/widgets/alert.dart';
 import 'dart:math';
-
-import 'package:xo_game/HomeScreen.dart';
 
 extension ContainsAll on List {
   bool containsAll(int x, int y, [z]) {
@@ -37,22 +36,10 @@ class GameLogic {
           showDialog(
               context: context,
               builder: (_) {
-                return AlertDialog(
-                  title: const Text("Game Over!"),
-                  content: const Text("Nobody Win"),
-                  actions: [
-                    TextButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                          resetGame();
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      const HomeScreen()));
-                        },
-                        child: const Text("OK"))
-                  ],
+                return const Alert(
+                  title: "Game Over!",
+                  content: "Nobody Wins!",
+                  onPressed: resetGame,
                 );
               });
         }
@@ -282,6 +269,7 @@ class GameLogic {
           } else if (playerX.containsAll(2, 6) &&
               !playerO.contains(4) &&
               !playerX.contains(4)) {
+            print("x 2 and 6");
             playerO.add(4);
           } else {
             do {
@@ -297,23 +285,10 @@ class GameLogic {
           showDialog(
               context: context,
               builder: (_) {
-                return AlertDialog(
-                  title: Text("Game Over!"),
-                  content: Text("Nobody Win"),
-                  actions: [
-                    TextButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                          resetGame();
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      HomeScreen()));
-                        },
-                        child: Text("OK"))
-                  ],
-                );
+                return const Alert(
+                    title: "Game Over!",
+                    content: "Nobody Wins!",
+                    onPressed: resetGame);
               });
         }
       }
@@ -338,23 +313,10 @@ class GameLogic {
       showDialog(
           context: context,
           builder: (_) {
-            return AlertDialog(
-              title: Text("Congratulations!"),
-              content: Text("Player O Wins!"),
-              actions: [
-                TextButton(
-                    onPressed: () {
-                      // print("OOOOOOOOOO");
-                      Navigator.pop(context);
-                      resetGame();
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) => HomeScreen()));
-                    },
-                    child: Text("OK"))
-              ],
-            );
+            return const Alert(
+                title: "Congratulations!",
+                content: "Player O Wins!",
+                onPressed: resetGame);
           });
     }
 
@@ -375,22 +337,10 @@ class GameLogic {
       showDialog(
           context: context,
           builder: (_) {
-            return AlertDialog(
-              title: Text("Congratulations!"),
-              content: Text("Player X Wins!"),
-              actions: [
-                TextButton(
-                    onPressed: () {
-                      // print("XXXXXXXXX");
-                      Navigator.pop(context);
-                      resetGame();
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) => HomeScreen()));
-                    },
-                    child: Text("OK"))
-              ],
+            return const Alert(
+              title: "Congratulations!",
+              content: "Player X Wins!",
+              onPressed: resetGame,
             );
           });
       //  resetGame();

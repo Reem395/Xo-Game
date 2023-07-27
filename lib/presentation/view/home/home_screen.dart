@@ -1,8 +1,8 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:xo_game/GameLogic.dart';
+import 'package:xo_game/presentation/styles/colors.dart';
+
+import '../../../business_logic/game_logic.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -23,33 +23,34 @@ class _HomeScreenState extends State<HomeScreen> {
     var screenSize = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: const Color.fromARGB(232, 68, 5, 39),
+        backgroundColor: AppColor.honeydew,
         body: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: MediaQuery.of(context).orientation==Orientation.portrait? Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ...firstSection(screenSize),
-              gameGrid(),
-              ...bottom_Section(screenSize)
-            ],
-          ):
-          //Grid if orientation is landscape
-          Row(
-            children: [
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ...firstSection(screenSize),
-                    ...bottom_Section(screenSize),
-                  ],
-                ),
-              ),
-              gameGrid(),
-            ],
-          )
-        ),
+            padding: const EdgeInsets.all(20.0),
+            child: MediaQuery.of(context).orientation == Orientation.portrait
+                ? Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ...firstSection(screenSize),
+                      gameGrid(),
+                      ...bottomSection(screenSize)
+                    ],
+                  )
+                :
+                //Grid if orientation is landscape
+                Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ...firstSection(screenSize),
+                            ...bottomSection(screenSize),
+                          ],
+                        ),
+                      ),
+                      gameGrid(),
+                    ],
+                  )),
       ),
     );
   }
@@ -78,20 +79,21 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         title: const Text(
           "Turn on/off 2 players",
-          style: TextStyle(color: Colors.white, fontSize: 25),
+          style: TextStyle(
+              color: AppColor.blue, fontSize: 25, fontWeight: FontWeight.w500),
         ),
       ),
-       SizedBox(
-        height:screenSize.height*0.02,
+      SizedBox(
+        height: screenSize.height * 0.02,
       ),
       Text(
         // "It's ${currentPlayer = GameLogic.CP == 'X' ? 'O' : 'X'} turn"
         "It's ${GameLogic.currentPlayer} turn".toUpperCase(),
         style: const TextStyle(
-            color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
+            color: AppColor.orange, fontSize: 25, fontWeight: FontWeight.bold),
       ),
       SizedBox(
-        height: screenSize.height*0.04,
+        height: screenSize.height * 0.04,
       ),
     ];
   }
@@ -108,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
           return Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Colors.grey,
+              color: AppColor.primary,
             ),
             child: InkWell(
               onTap: () {
@@ -134,8 +136,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     fontSize: 40,
                     fontWeight: FontWeight.bold,
                     color: GameLogic.playerX.contains(index)
-                        ? Colors.black
-                        : Color.fromARGB(232, 68, 5, 39)),
+                        ? AppColor.moonStone
+                        : AppColor.orange),
               )),
             ),
           );
@@ -144,7 +146,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  List<Widget> bottom_Section(Size screenSize) {
+  List<Widget> bottomSection(Size screenSize) {
     return [
       ElevatedButton.icon(
         onPressed: () {
@@ -152,11 +154,17 @@ class _HomeScreenState extends State<HomeScreen> {
             GameLogic.resetGame();
           });
         },
-        label: Text("Repeat the game"),
-        icon: const Icon(Icons.replay_outlined),
+        label: const Text(
+          "Repeat the game",
+          style: TextStyle(color: AppColor.vanilla),
+        ),
+        icon: const Icon(
+          Icons.replay_outlined,
+          color: AppColor.blue,
+        ),
       ),
       SizedBox(
-        height: screenSize.height*0.02,
+        height: screenSize.height * 0.02,
       )
     ];
   }
