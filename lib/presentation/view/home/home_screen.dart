@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:xo_game/presentation/styles/colors.dart';
+import 'package:sizer/sizer.dart';
+import 'package:xo_game/presentation/styles/app_color.dart';
 
 import '../../../business_logic/game_logic.dart';
 
@@ -77,23 +78,25 @@ class _HomeScreenState extends State<HomeScreen> {
             twoPlayersMode = newValue;
           });
         },
-        title: const Text(
+        title: Text(
           "Turn on/off 2 players",
           style: TextStyle(
-              color: AppColor.blue, fontSize: 25, fontWeight: FontWeight.w500),
+              color: AppColor.blue,
+              fontSize: 15.sp,
+              fontWeight: FontWeight.w500),
         ),
       ),
-      SizedBox(
-        height: screenSize.height * 0.02,
-      ),
+      SizedBox(height: 2.h),
       Text(
         // "It's ${currentPlayer = GameLogic.CP == 'X' ? 'O' : 'X'} turn"
         "It's ${GameLogic.currentPlayer} turn".toUpperCase(),
-        style: const TextStyle(
-            color: AppColor.orange, fontSize: 25, fontWeight: FontWeight.bold),
+        style: TextStyle(
+            color: AppColor.orange,
+            fontSize: 17.sp,
+            fontWeight: FontWeight.bold),
       ),
       SizedBox(
-        height: screenSize.height * 0.04,
+        height: 4.h,
       ),
     ];
   }
@@ -110,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
           return Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: AppColor.primary,
+              color: AppColor.offWhite,
             ),
             child: InkWell(
               onTap: () {
@@ -133,7 +136,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ? 'O'
                         : '',
                 style: TextStyle(
-                    fontSize: 40,
+                    fontSize: 28.sp,
                     fontWeight: FontWeight.bold,
                     color: GameLogic.playerX.contains(index)
                         ? AppColor.moonStone
@@ -164,7 +167,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       SizedBox(
-        height: screenSize.height * 0.02,
+        height: 2.h,
       )
     ];
   }

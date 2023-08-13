@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:xo_game/presentation/styles/colors.dart';
+import 'package:sizer/sizer.dart';
+import 'package:xo_game/presentation/styles/app_color.dart';
 
 import '../home_screen.dart';
 
@@ -16,7 +17,7 @@ class Alert extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: AppColor.primary.withOpacity(0.5),
+      backgroundColor: AppColor.offWhite.withOpacity(0.5),
       title: Text(
         title,
         style: const TextStyle(color: AppColor.blue),
@@ -37,9 +38,9 @@ class Alert extends StatelessWidget {
                   MaterialPageRoute(
                       builder: (BuildContext context) => const HomeScreen()));
             },
-            child: const Text(
+            child: Text(
               "OK",
-              style: TextStyle(fontSize: 18, color: AppColor.tomato),
+              style: TextStyle(fontSize: 12.sp, color: AppColor.tomato),
             ))
       ],
     );

@@ -5,6 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "JKM_mobile",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "DEFNW18B27006610"
+        },
+        {
+            "name": "LD_emulator",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "emulator-5554"
+        },
+        {
             "name": "xo_game",
             "request": "launch",
             "type": "dart"
@@ -20,6 +32,15 @@
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "All Devices",
+            "configurations": [
+                "JKM_mobile",
+                "LD_emulator"
+            ]
         }
     ]
 }
