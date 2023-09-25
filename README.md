@@ -1,16 +1,12 @@
-# xo_game
+# XO Game - Tic-Tac-Toe Fun for Everyone
+Welcome to XO Game, a Flutter application that brings the classic Tic-Tac-Toe game to your fingertips. Challenge your friends in two-player mode or test your skills in auto mode. XO Game is simple, addictive, and loads of fun!
 
-A new Flutter project.
+## Features
+1. Two-Player Mode
+Challenge your friends or family members to a friendly game of Tic-Tac-Toe. Take turns placing X and O on the board and aim to get three in a row to win.
 
-## Getting Started
+2. Auto Mode
+Don't have a friend to play with? No worries! Play on auto mode and see if you can outsmart it.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+3. Responsive Design
+Thanks to the use of Sizer, XO Game looks great on all screen sizes. Whether you're playing on a phone or a tablet, the game adapts to your device seamlessly.
